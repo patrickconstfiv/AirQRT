@@ -21,6 +21,12 @@ Another machine **receives** by pointing its webcam at the screen and scanning t
 
 The data is compressed, split into frames, and protected by **Reed-Solomon FEC** (Forward Error Correction) — so even if the camera misses some frames, the file can still be fully recovered.
 
+<p align="center">
+  <img src="SHOW1.png" width="45%">
+  &nbsp;&nbsp;
+  <img src="SHOW2.png" width="45%">
+</p>
+
 ## Download
 
 Pre-built executable (no Python required):
@@ -144,7 +150,7 @@ QR_ERROR_LEVEL = 'M'        # L / M / Q / H
 
 ## License
 
-This project is open source. See [LICENSE](LICENSE) for details.
+MIT License. See [LICENSE](LICENSE) for details.
 
 ---
 

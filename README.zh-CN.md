@@ -21,6 +21,12 @@
 
 数据经过压缩、分帧，并使用 **Reed-Solomon FEC（前向纠错码）** 保护——即使摄像头漏扫了部分帧，文件仍能完整恢复。
 
+<p align="center">
+  <img src="SHOW1.png" width="45%">
+  &nbsp;&nbsp;
+  <img src="SHOW2.png" width="45%">
+</p>
+
 ## 下载
 
 预构建可执行文件（无需 Python）：
@@ -144,7 +150,7 @@ QR_ERROR_LEVEL = 'M'        # L / M / Q / H
 
 ## 许可证
 
-本项目开源。详情见 [LICENSE](LICENSE)。
+MIT 许可证。详情见 [LICENSE](LICENSE)。
 
 ---
 

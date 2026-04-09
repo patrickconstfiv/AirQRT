@@ -21,6 +21,12 @@
 
 データは圧縮・分割され、**Reed-Solomon FEC（前方誤り訂正）** で保護されます。カメラが一部のフレームを読み落としても、ファイルは完全に復元できます。
 
+<p align="center">
+  <img src="SHOW1.png" width="45%">
+  &nbsp;&nbsp;
+  <img src="SHOW2.png" width="45%">
+</p>
+
 ## ダウンロード
 
 ビルド済み実行ファイル（Python不要）：
@@ -144,7 +150,7 @@ QR_ERROR_LEVEL = 'M'        # L / M / Q / H
 
 ## ライセンス
 
-本プロジェクトはオープンソースです。詳細は [LICENSE](LICENSE) をご覧ください。
+MIT ライセンス。詳細は [LICENSE](LICENSE) をご覧ください。
 
 ---
 
