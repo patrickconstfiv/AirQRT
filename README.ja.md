@@ -5,8 +5,7 @@
 <h1 align="center">AirQRT</h1>
 
 <p align="center">
-  <b>QRコードだけで Windows PC 間のファイルを完全オフライン転送</b><br>
-  ネットワーク不要。ケーブル不要。USBメモリ不要。画面とカメラだけ。
+  QRコードによる Windows PC 間のオフラインファイル転送ツール。
 </p>
 
 <p align="center">
@@ -24,11 +23,11 @@
 
 ## ダウンロード
 
-**すぐ使いたい方へ** — ビルド済み `.exe` をダウンロード（Python不要）：
+ビルド済み実行ファイル（Python不要）：
 
-> **[⬇ AirQRT をダウンロード (Windows .exe)](../../releases/latest)**
+> **[⬇ AirQRT をダウンロード (Windows .exe)](https://github.com/patrickconstfiv/AirQRT/releases/latest)**
 
-解凍してダブルクリックするだけです。
+**動作環境：** Windows 10/11、x86_64（64ビット）。
 
 ## 機能
 
@@ -50,7 +49,7 @@
 ### インストール
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/AirQRT.git
+git clone https://github.com/patrickconstfiv/AirQRT.git
 cd AirQRT
 pip install -r requirements.txt
 ```
@@ -103,11 +102,12 @@ Reed-Solomonコードに基づくブロックレベルFECを使用：
 
 | ファイルサイズ | 所要時間（目安） |
 |-------------|--------------|
-| 10 KB | 約30秒 |
-| 50 KB | 約2分 |
-| 100 KB | 約4分 |
+| 10 KB | 約5秒 |
+| 50 KB | 約15秒 |
+| 100 KB | 約30秒 |
+| 500 KB | 約2.5分 |
 
-小さなファイル（500 KB未満）に最適です。大きなファイルは圧縮してから転送してください。
+500 KB 以下のファイルに適しています。大きなファイルは圧縮してから転送してください。
 
 ## パラメータ調整
 

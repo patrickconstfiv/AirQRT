@@ -5,8 +5,7 @@
 <h1 align="center">AirQRT</h1>
 
 <p align="center">
-  <b>通过二维码实现 Windows 电脑间的完全离线文件传输</b><br>
-  无需网络，无需数据线，无需 U 盘。只需屏幕和摄像头。
+  通过二维码实现 Windows 电脑间的离线文件传输。
 </p>
 
 <p align="center">
@@ -24,11 +23,11 @@
 
 ## 下载
 
-**只想直接使用？** 下载打包好的 `.exe`，无需安装 Python：
+预构建可执行文件（无需 Python）：
 
-> **[⬇ 下载 AirQRT (Windows .exe)](../../releases/latest)**
+> **[⬇ 下载 AirQRT (Windows .exe)](https://github.com/patrickconstfiv/AirQRT/releases/latest)**
 
-解压后双击运行即可。
+**系统要求：** Windows 10/11，x86_64（64 位）。
 
 ## 功能特性
 
@@ -50,7 +49,7 @@
 ### 安装
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/AirQRT.git
+git clone https://github.com/patrickconstfiv/AirQRT.git
 cd AirQRT
 pip install -r requirements.txt
 ```
@@ -103,9 +102,10 @@ pyinstaller --onefile --windowed --name "AirQRT" --icon=icon.ico --hidden-import
 
 | 文件大小 | 大约耗时 |
 |---------|---------|
-| 10 KB | ~30 秒 |
-| 50 KB | ~2 分钟 |
-| 100 KB | ~4 分钟 |
+| 10 KB | ~5 秒 |
+| 50 KB | ~15 秒 |
+| 100 KB | ~30 秒 |
+| 500 KB | ~2.5 分钟 |
 
 适合传输小文件（< 500 KB）。较大文件建议先压缩再传输。
 

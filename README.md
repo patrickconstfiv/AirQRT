@@ -5,8 +5,7 @@
 <h1 align="center">AirQRT</h1>
 
 <p align="center">
-  <b>Transfer files between Windows PCs completely offline — using nothing but QR codes.</b><br>
-  No network. No cable. No USB drive. Just screen &amp; camera.
+  Offline file transfer between Windows PCs via QR codes.
 </p>
 
 <p align="center">
@@ -24,11 +23,11 @@ The data is compressed, split into frames, and protected by **Reed-Solomon FEC**
 
 ## Download
 
-**Just want the app?** Grab the ready-to-use `.exe` — no Python required:
+Pre-built executable (no Python required):
 
-> **[⬇ Download AirQRT (Windows .exe)](../../releases/latest)**
+> **[⬇ Download AirQRT (Windows .exe)](https://github.com/patrickconstfiv/AirQRT/releases/latest)**
 
-Extract and double-click. That's it.
+**System requirements:** Windows 10/11, x86_64 (64-bit).
 
 ## Features
 
@@ -50,7 +49,7 @@ Extract and double-click. That's it.
 ### Install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/AirQRT.git
+git clone https://github.com/patrickconstfiv/AirQRT.git
 cd AirQRT
 pip install -r requirements.txt
 ```
@@ -103,9 +102,10 @@ As long as *any* 50 of those 65 frames are scanned, the full block is recovered 
 
 | File Size | Approx. Time |
 |-----------|--------------|
-| 10 KB | ~30 s |
-| 50 KB | ~2 min |
-| 100 KB | ~4 min |
+| 10 KB | ~5 s |
+| 50 KB | ~15 s |
+| 100 KB | ~30 s |
+| 500 KB | ~2.5 min |
 
 Best suited for small files (< 500 KB). For larger files, compress before sending.
 
