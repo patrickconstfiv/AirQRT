@@ -1,0 +1,7 @@
+# Windows 发送端和接收端依赖
+opencv-python>=4.8.0
+qrcode>=7.4.2
+numpy>=1.24.0
+Pillow>=10.0.0
+windnd>=1.0.7
+pyinstaller>=6.0.0
