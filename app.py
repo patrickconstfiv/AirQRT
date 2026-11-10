@@ -96,6 +96,7 @@ I18N = {
         "cam_starting":      "> Camera started, scanning...",
         "cam_error":         "Cannot open camera!\nCheck your connection.",
         "recv_stats":        "Blocks: {}/{} ({}%)  |  Valid: {}  |  Dup: {}  |  Err: {}",
+        "recv_missing":      "Missing blocks: {}",
         "recv_progress":     "> Receiving...  Session {}",
         "recv_done_stats":   "Done!  Valid: {}  |  Dup: {}",
         "recv_done_status":  "> Transfer complete!",
@@ -143,6 +144,7 @@ I18N = {
         "cam_starting":      "> 摄像头已启动，等待扫描…",
         "cam_error":         "无法打开摄像头！\n请检查摄像头连接。",
         "recv_stats":        "块: {}/{} ({}%)  |  有效: {}  |  重复: {}  |  错误: {}",
+        "recv_missing":      "未接收块: {}",
         "recv_progress":     "> 正在接收…  会话 {}",
         "recv_done_stats":   "接收完成!  有效帧: {}  |  重复: {}",
         "recv_done_status":  "> 传输完成！",
@@ -190,6 +192,7 @@ I18N = {
         "cam_starting":      "> Камера запущена, сканирование…",
         "cam_error":         "Не удалось открыть камеру!\nПроверьте подключение.",
         "recv_stats":        "Блоки: {}/{} ({}%)  |  Принято: {}  |  Дубли: {}  |  Ошибки: {}",
+        "recv_missing":      "Пропущенные блоки: {}",
         "recv_progress":     "> Приём…  Сессия {}",
         "recv_done_stats":   "Готово!  Принято: {}  |  Дубли: {}",
         "recv_done_status":  "> Передача завершена!",
@@ -237,6 +240,7 @@ I18N = {
         "cam_starting":      "> カメラ起動、スキャン中…",
         "cam_error":         "カメラを開けません！\n接続を確認してください。",
         "recv_stats":        "ブロック: {}/{} ({}%)  |  有効: {}  |  重複: {}  |  エラー: {}",
+        "recv_missing":      "未受信ブロック: {}",
         "recv_progress":     "> 受信中…  セッション {}",
         "recv_done_stats":   "完了!  有効: {}  |  重複: {}",
         "recv_done_status":  "> 転送完了！",
@@ -896,6 +900,10 @@ class ReceiverTab:
                                   bg=C["bg"], fg=C["fg_dim"])
         self.stats_lbl.pack()
 
+        self.missing_lbl = tk.Label(self.frame, text="", font=(FONT, 9),
+                        bg=C["bg"], fg=C["yellow"], anchor="w")
+        self.missing_lbl.pack(fill="x", padx=12)
+
         self.btn = _make_btn(self.frame, "", self._toggle,
                              bg=C["btn"], fg=C["accent"], font_size=13, padx=10, pady=10)
         self.btn.pack(fill="x", padx=60, pady=8)
@@ -911,6 +919,7 @@ class ReceiverTab:
             self.btn.config(text=self.t("start_recv"))
             if not self.completed:
                 self.stats_lbl.config(text=self.t("recv_waiting"))
+                self.missing_lbl.config(text="")
                 self.status_lbl.config(text=self.t("status_ready"))
 
     # ── 开始 / 停止 ─────────────────────────────────────────
@@ -950,6 +959,7 @@ class ReceiverTab:
         self.btn.config(text=self.t("start_recv"), bg=C["btn"])
         self.cam_label.config(image="", text=self.t("recv_hint"), fg=C["fg_dim"])
         if not self.completed:
+            self.missing_lbl.config(text="")
             self.status_lbl.config(text=self.t("recv_stopped"))
 
     # ── 摄像头循环 ───────────────────────────────────────────
@@ -1002,6 +1012,9 @@ class ReceiverTab:
                 r.decoded_blocks, r.total_blocks, f"{pct:.0f}",
                 r.valid_count, r.duplicate_count, r.error_count,
             ))
+            missing = r.get_missing_blocks()
+            missing_text = ", ".join(f"B{index + 1}" for index in missing)
+            self.missing_lbl.config(text=self.t("recv_missing").format(missing_text or "-"))
             self.status_lbl.config(text=self.t("recv_progress").format(r.current_session))
 
         if self.receiving:
@@ -1011,6 +1024,7 @@ class ReceiverTab:
         self.recv_progress.set(100)
         r = self.receiver
         self.stats_lbl.config(text=self.t("recv_done_stats").format(r.valid_count, r.duplicate_count))
+        self.missing_lbl.config(text=self.t("recv_missing").format("-"))
         self.status_lbl.config(text=self.t("recv_done_status"))
         self.btn.config(text=self.t("start_recv"), bg=C["btn"])
         if self.cap:
@@ -1021,7 +1035,6 @@ class ReceiverTab:
             os.startfile(abs_dir)
         except Exception:
             pass
-        messagebox.showinfo(self.t("recv_done_title"), self.t("recv_done_msg").format(abs_dir))
 
     def cleanup(self):
         self.receiving = False

@@ -44,5 +44,4 @@ echo.
 echo 使用方法:
 echo   发送: 双击 start_sender.bat
 echo   接收: 双击 start_receiver.bat
-echo.
 pause
